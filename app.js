@@ -43,7 +43,5 @@ function getJokes(e) {
 
     xhr.send();
 
-    console.log(number);
-
     e.preventDefault();
 }
