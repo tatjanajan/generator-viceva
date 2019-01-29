@@ -5,7 +5,7 @@ function getJokes(e) {
     // vrijednost unesenu u input polje (broj viceva) spremamo u varijablu
     const number = document.querySelector('input[type="number"]').value;
 
-    // instanciramo XMLHttpRequest objekt
+    // instanciramo XMLHttpRequest objekt (koristi se za razmjenu podataka sa serverom)
     const xhr = new XMLHttpRequest();
 
     // GET metodom dohvaćamo viceve iz baze podataka s vicevima pomoću api url-a, a true nam osigurava da je u pitanju asinkronost
@@ -25,10 +25,10 @@ function getJokes(e) {
             // prvo se treba osigureti da je type: succes
             if(response.type === 'success') {
 
-                // response ima propertije type i value, pa mi forEach petljom prolazimo kroz value (u njemu se nalazi array s vicevima), a ne kroz sami response
+                // response ima propertije "type" i "value", pa mi forEach petljom prolazimo kroz "value" (u njemu se nalazi array s vicevima), a ne kroz sami response
                 response.value.forEach( function(joke) {
                     // appendamo output
-                    output += `<li>${joke.joke}</li>`                    
+                    output += `<li>${joke.joke}</li>` // value ima propertije "id" i "joke", pa mi ovdje dohvaćamo "joke"                    
                 });
 
                 document.querySelector('.jokes').innerHTML = output;
